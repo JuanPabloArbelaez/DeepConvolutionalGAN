@@ -75,9 +75,7 @@ class Generator(nn.Module):
         Parameters:
             noise: a noise tensor with dimensions (n_samples, z_dim)
         """
-        print(f'Original Noise shape: {noise.size()}')
         unsqueezed = noise.view(len(noise), self.z_dim, 1, 1)
-        print(f'Squeezed Noise shape: {unsqueezed.size()}')
         return unsqueezed
 
     def forward(self, noise):
@@ -151,6 +149,4 @@ class Discriminator(nn.Module):
             image: a flattened iamge tensor with dimension (im_dim)
         """
         disc_pred =self.disc(image)
-        print(f'Original Disc_Pred: {disc_pred.size()}')
-        print(f'Original Disc_Pred: {disc_pred.view(len(disc_pred), -1).size()}')
         return disc_pred.view(len(disc_pred), -1)
